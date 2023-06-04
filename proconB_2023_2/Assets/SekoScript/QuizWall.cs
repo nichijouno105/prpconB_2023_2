@@ -21,7 +21,7 @@ public class QuizWall : MonoBehaviour {
     //bool isAnswered = false; // quizを解答したかどうか
     int quizNum;
 
-    //---以下クイズリスト作成---------//
+    // クイズリスト作成用
     Dictionary<int,List<string>> QuizList;
     
     // ◯と×ボタンからの呼び出し用インスタンス
@@ -51,22 +51,24 @@ public class QuizWall : MonoBehaviour {
     {
         bool maru = true;
         bool batsu = false;
-        //エンターキーが入力された場合「true」
+        // oまたはxが入力された場合処理
+        // これをジョイコンのボタンに変更する
         if (Input.GetKey(KeyCode.O)){
-            //オブジェクトを削除
-            CheckAnswer(maru);
+            //正解を確認する
+            this.CheckAnswer(maru);
         }
         if (Input.GetKey(KeyCode.X)){
-            //オブジェクトを削除
-            CheckAnswer(batsu);
+            //正解を確認する
+            this.CheckAnswer(batsu);
         }
     }
 
-    // 壊れる演出
+    // 壊れるアニメーション
     public void BreakEffect()
     {
         GameObject flagment = (GameObject)Resources.Load("breakBox");
         Instantiate(flagment, currentWall.transform.position + new Vector3(0, 1, 0), currentWall.transform.rotation);
+        //Debug.Log("BoxBreak!");
     }
 
     // クイズを表示する
@@ -83,29 +85,33 @@ public class QuizWall : MonoBehaviour {
         }
         quizText.text = QuizData;
 
-        Debug.Log(QuizData);
-        Debug.Log(correctAnswer);
+        //Debug.Log(QuizData);
+        //Debug.Log(correctAnswer);
     }
     // クイズの正答を確認（ボタンから呼び出し）
     public void CheckAnswer(bool answer)
     {
-        if (answer == correctAnswer)
-        {
-            // 正解の場合、オブジェクトを削除
-            Destroy(currentWall, 0.1f);
-            BreakEffect();
-            //isAnswered = true;
-        }
-        else
-        {
-            // 不正解の場合、何らかの処理を行う（例えば再挑戦など）
-            //quizText.text = QuizData;
-        }
+        // QuizFlagがtrueなら（ボタンのチャタリング防止）
+        if(QuizFlag){
+            // 正解
+            if (answer == correctAnswer)
+            {
+                // 正解の場合、オブジェクトを削除
+                Destroy(currentWall, 0.1f);
+                BreakEffect();
+                //isAnswered = true;
+            }
+            // 不正解
+            else
+            {
+                // 不正解の場合、何らかの処理を行う
+            }
 
-        // クイズパネルを非表示にする
-        QuizUI.SetActive(false);
-        QuizFlag = false;
-        Debug.Log(QuizFlag);
+            // クイズパネルを非表示にする
+            QuizUI.SetActive(false);
+            QuizFlag = false;
+            //Debug.Log(QuizFlag);
+        }
     }
 
 	//playerがオブジェクトに当たったら発火
@@ -116,6 +122,7 @@ public class QuizWall : MonoBehaviour {
                 return;
             }else{
                 QuizFlag = true;
+                // 当たった壁情報を保存
                 currentWall = this.gameObject;
                 //QuizFlag = true;
                 QuizShow();
