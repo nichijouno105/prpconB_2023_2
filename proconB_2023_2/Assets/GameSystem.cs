@@ -7,7 +7,7 @@ public class GameSystem : MonoBehaviour {
 	//　スタートボタンを押したら実行する
 	public void StartGame() {
         Debug.Log("Start");
-		SceneManager.LoadScene ("Game");
+		SceneManager.LoadScene ("CreateGame");
 	}
 }
  
