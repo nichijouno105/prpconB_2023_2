@@ -13,6 +13,7 @@ public class Dungeon : MonoBehaviour
     public GameObject floor;    //床用オブジェクト
     public GameObject start;   //スタート地点に配置するオブジェクト
     public GameObject goal;    //ゴール地点に配置するオブジェクト
+    public GameObject breakbox; //壊れる壁
 
     /*
     *内部パラメータ
@@ -21,6 +22,7 @@ public class Dungeon : MonoBehaviour
     public Vector2Int startPos;    //スタートの座標
     public Vector2Int goalPos;     //ゴールの座標
     private List<Vector2Int> ReStartPos;
+    //private int hight = 3;
     void Start()
     {
         ReStartPos = new List<Vector2Int>();
@@ -164,12 +166,30 @@ public class Dungeon : MonoBehaviour
                 //範囲外、または壁の場合に壁オブジェクトを生成する
                 if (this.Maze[i, j] == Materials.Wall)
                 {
-                    for (int k = 0; k < 3; k++)
+                    for (int k = 0; k < 2; k++)
                     {
                         GameObject wallObj = Instantiate(wall, new Vector3(i, k, j), Quaternion.identity) as GameObject;
                         wallObj.transform.parent = transform;
                     }
                 }
+                /*if(this.Maze[i, j] == Materials.Path){
+                    float objp=Random.Range( 0.0f, 1.0f ) ;
+                    if(objp < 0.15){
+                        for (int k = 0; k < hight; k++)
+                        {
+                            GameObject breakboxObj = Instantiate(breakbox, new Vector3(i, k, j), Quaternion.identity) as GameObject;
+                            breakboxObj.transform.parent = transform;
+                        }
+                    }
+                    else if(objp < 0.225){
+                        GameObject wallObj = Instantiate(wall, new Vector3(i, 0, j), Quaternion.identity) as GameObject;
+                        wallObj.transform.parent = transform;
+                    }
+                    else if(objp < 0.3){
+                        GameObject wallObj = Instantiate(wall, new Vector3(i, 1, j), Quaternion.identity) as GameObject;
+                        wallObj.transform.parent = transform;
+                    }
+                }*/
                 //全ての場所に床オブジェクトを生成
                 GameObject floorObj = Instantiate(floor, new Vector3(i, -1, j), Quaternion.identity) as GameObject;
                 floorObj.transform.parent = transform;
@@ -201,7 +221,7 @@ public class Dungeon : MonoBehaviour
         return Pos;
     }
 
-   /* private double nomal(){
+    /*private double nomal(){
 
         double rnd = Random.Range(0,1); 
         double X,Y; 
@@ -209,7 +229,7 @@ public class Dungeon : MonoBehaviour
 
         X = rnd.NextDouble();
         Y = rnd.NextDouble(); 
-        Z1 = Math.Sqrt(-2.0 * Math.Log(X)) * Math.Cos(2.0 * Math.PI * Y); 
+        Z1 = Mathf.Sqrt(-2.0 * Mathf.Log(X)) * Mathf.Cos(2.0 * Mathf.PI * Y); 
 
         return Z1;
 
