@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SceneManagement;
 //using Unity.Mathematics;
 ////:///
 public class Dungeon : MonoBehaviour
@@ -10,19 +11,22 @@ public class Dungeon : MonoBehaviour
     */
     public int max = 5;        //縦横のサイズ(奇数)
     public GameObject wall;    //壁用オブジェクト
+    //public GameObject wall2;    //壁用オブジェクト
     public GameObject floor;    //床用オブジェクト
     public GameObject start;   //スタート地点に配置するオブジェクト
     public GameObject goal;    //ゴール地点に配置するオブジェクト
-    public GameObject breakbox; //壊れる壁
+    public GameObject breakwall; //壊れる壁
+    //public GameObject quiz; //壊れる壁
+    
 
     /*
     *内部パラメータ
     */
     private Materials[,] Maze;      //マップの状態 
-    public Vector2Int startPos;    //スタートの座標
+    public static Vector2Int startPos;    //スタートの座標
     public Vector2Int goalPos;     //ゴールの座標
     private List<Vector2Int> ReStartPos;
-    //private int hight = 3;
+    private int hight = 3;
     void Start()
     {
         ReStartPos = new List<Vector2Int>();
@@ -45,6 +49,24 @@ public class Dungeon : MonoBehaviour
         GameObject goalObj = Instantiate(goal, new Vector3(goalPos.x, -1, goalPos.y), Quaternion.identity) as GameObject;
         startObj.transform.parent = transform;
         goalObj.transform.parent = transform;
+        if(this.Maze[startPos.x+1, startPos.y]==Materials.Path){
+            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x+1, 0, startPos.y), Quaternion.identity) as GameObject;
+            breakwallObj.transform.parent = transform;
+        }        
+        else if(Maze[startPos.x, startPos.y+1]==Materials.Path){
+            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x, 0, startPos.y+1), Quaternion.identity) as GameObject;
+            breakwallObj.transform.parent = transform;
+        }        
+        else if(Maze[startPos.x-1, startPos.y]==Materials.Path){
+            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x-1, 0, startPos.y), Quaternion.identity) as GameObject;
+            breakwallObj.transform.parent = transform;
+        }        
+        else if(Maze[startPos.x, startPos.y-1]==Materials.Path){
+            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x, 0, startPos.y-1), Quaternion.identity) as GameObject;
+            breakwallObj.transform.parent = transform;
+        }
+        DontDestroyOnLoad(transform);
+        SceneManager.LoadScene ("Game");
     }
 
     private void ini_Maze()
@@ -170,15 +192,21 @@ public class Dungeon : MonoBehaviour
                     {
                         GameObject wallObj = Instantiate(wall, new Vector3(i, k, j), Quaternion.identity) as GameObject;
                         wallObj.transform.parent = transform;
+                        //GameObject wall2Obj = Instantiate(wall2, new Vector3(i, k, j), Quaternion.identity) as GameObject;
+                        //wall2Obj.transform.parent = transform;
                     }
                 }
                 /*if(this.Maze[i, j] == Materials.Path){
                     float objp=Random.Range( 0.0f, 1.0f ) ;
-                    if(objp < 0.15){
+                    if(objp < 0.075){
+                        GameObject quizObj = Instantiate(quiz, new Vector3(i, 0, j), Quaternion.identity) as GameObject;
+                        quizObj.transform.parent = transform;
+                    }
+                    else if(objp < 0.15){
                         for (int k = 0; k < hight; k++)
                         {
-                            GameObject breakboxObj = Instantiate(breakbox, new Vector3(i, k, j), Quaternion.identity) as GameObject;
-                            breakboxObj.transform.parent = transform;
+                            GameObject breakwallObj = Instantiate(breakwall, new Vector3(i, k, j), Quaternion.identity) as GameObject;
+                            breakwallObj.transform.parent = transform;
                         }
                     }
                     else if(objp < 0.225){

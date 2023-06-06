@@ -19,4 +19,8 @@ public class Destroy : MonoBehaviour {
             Debug.Log("ObjectDestroy");
 		}
 	}
+
+    void start(){
+         Debug.Log("start_destoy");
+    }
 }
