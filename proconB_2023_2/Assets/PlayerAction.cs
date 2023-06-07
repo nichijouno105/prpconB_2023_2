@@ -43,6 +43,9 @@ public class PlayerAction : MonoBehaviour
     private bool _inputAttack;
     private bool _inputDash;
     private bool _inputSquat;
+
+    private bool AttackFlag = false;
+
     [Header("ダッシュの速さ倍率"), SerializeField]
     private float _dashspeed = 3;
     private float _dspeed = 1;
@@ -106,27 +109,39 @@ public class PlayerAction : MonoBehaviour
 
 
 //追加 
+    public void BreakEffect(Collider other)
+    {
+        GameObject flagment = (GameObject)Resources.Load("breakBox");
+        Instantiate(flagment, other.transform.position + new Vector3(0, 1, 0), other.transform.rotation);
+    }
 
     //オブジェクトと接触した瞬間に呼び出される
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
- 
+        Debug.Log("aaa");
         //攻撃した相手がEnemyの場合
-        if(other.CompareTag("Enemy")){
+        if(other.CompareTag("Enemy")&&AttackFlag==true){
             
             Destroy(other.gameObject);
+            BreakEffect(other);
  
         }
     }
+
+    
     
 //攻撃する
     public void OnAttack(InputAction.CallbackContext context)
     {
+        Debug.Log("punch");
+        AttackFlag=true;
         //  // 入力値を保持しておく
         _inputAttack = context.ReadValueAsButton();
         //_animator.SetTrigger("Attack");
         _animator.SetBool("walking", false);
         _animator.SetBool("attacking", true);
+
+        
 
 
     }
@@ -181,6 +196,13 @@ public class PlayerAction : MonoBehaviour
     {
         handCollider.enabled = false;
         _animator.SetBool("attacking", false);
+
+        if(AttackFlag)
+        {
+            AttackFlag = false;
+            Debug.Log("punch-end");
+        }
+
     }
 
      private void OnDashReleased()
@@ -243,7 +265,7 @@ public class PlayerAction : MonoBehaviour
         moveDirection.Normalize();
 
         // moveDirectionの値をコンソールに表示
-Debug.Log("Move Direction: " + moveDirection);
+//Debug.Log("Move Direction: " + moveDirection);
 
         //改
         // 移動速度を計算
@@ -276,7 +298,7 @@ Debug.Log("Move Direction: " + moveDirection);
         if(_inputAttack)
         {
             handCollider.enabled = true;
-            Invoke("ColliderReset", 0.5f);
+            Invoke("ColliderReset", 2.0f);
         }
 
         //Dashボタンが押されている間はダッシュする

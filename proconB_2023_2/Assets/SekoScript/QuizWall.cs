@@ -115,8 +115,9 @@ public class QuizWall : MonoBehaviour {
     }
 
 	//playerがオブジェクトに当たったら発火
-	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.tag == "Player") {
+	void OnTriggerEnter(Collider collider) {
+        Debug.Log(collider.gameObject.name);
+		if (collider.gameObject.tag == "Player") {
             // Quiz状態に他のクイズ壁に当たった場合は無効化
             if(QuizFlag){
                 return;

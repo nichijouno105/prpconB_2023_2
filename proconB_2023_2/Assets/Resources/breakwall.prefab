@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1781221793048635724}
   - component: {fileID: 8439088800461296472}
   - component: {fileID: 1929395053899042761}
-  - component: {fileID: 6583643526288242439}
+  - component: {fileID: -6600165531466348677}
   m_Layer: 0
   m_Name: breakwall
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,20 +93,21 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8219629836695380203}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.35, y: 1.35, z: 1.35}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6583643526288242439
-MonoBehaviour:
+--- !u!65 &-6600165531466348677
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8219629836695380203}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb1035ef530ff4e3aa474fc75c021c8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

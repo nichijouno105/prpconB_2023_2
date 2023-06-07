@@ -17,6 +17,8 @@ public class Dungeon : MonoBehaviour
     public GameObject goal;    //ゴール地点に配置するオブジェクト
     public GameObject breakwall; //壊れる壁
     public GameObject quiz; //壊れる壁
+    public GameObject canvas;
+    public GameObject goal_area;
     
 
     /*
@@ -47,8 +49,10 @@ public class Dungeon : MonoBehaviour
         //スタート地点とゴール地点にオブジェクトを配置する
         GameObject startObj = Instantiate(start, new Vector3(startPos.x, -1, startPos.y), Quaternion.identity) as GameObject;
         GameObject goalObj = Instantiate(goal, new Vector3(goalPos.x, -1, goalPos.y), Quaternion.identity) as GameObject;
+        GameObject goalareaObj = Instantiate(goal_area, new Vector3(goalPos.x, 0, goalPos.y), Quaternion.identity) as GameObject;
         startObj.transform.parent = transform;
         goalObj.transform.parent = transform;
+        goalareaObj.transform.parent = transform;
         if(this.Maze[startPos.x+1, startPos.y]==Materials.Path){
             GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x+2, 0, startPos.y), Quaternion.identity) as GameObject;
             breakwallObj.transform.parent = transform;
@@ -66,6 +70,8 @@ public class Dungeon : MonoBehaviour
             breakwallObj.transform.parent = transform;
         }
         DontDestroyOnLoad(transform);
+        DontDestroyOnLoad(canvas);
+
         SceneManager.LoadScene ("Game");
     }
 
