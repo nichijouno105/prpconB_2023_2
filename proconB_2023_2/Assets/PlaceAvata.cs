@@ -9,7 +9,7 @@ public class PlaceAvata : MonoBehaviour
     void Start()
     {
     //script = GameObject.Find("Dungeon").GetComponent<Dungeon>();
-    GameObject avatarObj = Instantiate(avatar, new Vector3(Dungeon.startPos.x, 0, Dungeon.startPos.y), Quaternion.identity) as GameObject;
+    GameObject avatarObj = Instantiate(avatar, new Vector3(Dungeon.startPos.x, -0.5f, Dungeon.startPos.y), Quaternion.identity) as GameObject;
     avatarObj.transform.parent = transform;
     }
 }

@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         moveDirection.Normalize();
 
         // moveDirectionの値をコンソールに表示
-        Debug.Log("Move Direction: " + moveDirection);
+        //Debug.Log("Move Direction: " + moveDirection);
 
         // 移動速度を計算
         var moveVelocity = moveDirection * _speed;

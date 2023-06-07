@@ -11,12 +11,12 @@ public class Dungeon : MonoBehaviour
     */
     public int max = 5;        //縦横のサイズ(奇数)
     public GameObject wall;    //壁用オブジェクト
-    //public GameObject wall2;    //壁用オブジェクト
+    public GameObject wall2;    //壁用オブジェクト
     public GameObject floor;    //床用オブジェクト
     public GameObject start;   //スタート地点に配置するオブジェクト
     public GameObject goal;    //ゴール地点に配置するオブジェクト
     public GameObject breakwall; //壊れる壁
-    //public GameObject quiz; //壊れる壁
+    public GameObject quiz; //壊れる壁
     
 
     /*
@@ -50,19 +50,19 @@ public class Dungeon : MonoBehaviour
         startObj.transform.parent = transform;
         goalObj.transform.parent = transform;
         if(this.Maze[startPos.x+1, startPos.y]==Materials.Path){
-            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x+1, 0, startPos.y), Quaternion.identity) as GameObject;
+            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x+2, 0, startPos.y), Quaternion.identity) as GameObject;
             breakwallObj.transform.parent = transform;
         }        
         else if(Maze[startPos.x, startPos.y+1]==Materials.Path){
-            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x, 0, startPos.y+1), Quaternion.identity) as GameObject;
+            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x, 0, startPos.y+2), Quaternion.identity) as GameObject;
             breakwallObj.transform.parent = transform;
         }        
         else if(Maze[startPos.x-1, startPos.y]==Materials.Path){
-            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x-1, 0, startPos.y), Quaternion.identity) as GameObject;
+            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x-2, 0, startPos.y), Quaternion.identity) as GameObject;
             breakwallObj.transform.parent = transform;
         }        
         else if(Maze[startPos.x, startPos.y-1]==Materials.Path){
-            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x, 0, startPos.y-1), Quaternion.identity) as GameObject;
+            GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x, 0, startPos.y-2), Quaternion.identity) as GameObject;
             breakwallObj.transform.parent = transform;
         }
         DontDestroyOnLoad(transform);
@@ -192,8 +192,8 @@ public class Dungeon : MonoBehaviour
                     {
                         GameObject wallObj = Instantiate(wall, new Vector3(i, k, j), Quaternion.identity) as GameObject;
                         wallObj.transform.parent = transform;
-                        //GameObject wall2Obj = Instantiate(wall2, new Vector3(i, k, j), Quaternion.identity) as GameObject;
-                        //wall2Obj.transform.parent = transform;
+                        GameObject wall2Obj = Instantiate(wall2, new Vector3(i, k, j), Quaternion.identity) as GameObject;
+                        wall2Obj.transform.parent = transform;
                     }
                 }
                 /*if(this.Maze[i, j] == Materials.Path){

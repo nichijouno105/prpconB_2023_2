@@ -7,7 +7,7 @@ public class BreakBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<Collider>().enabled = false;
     }
 
     // Update is called once per frame
@@ -22,6 +22,7 @@ public class BreakBox : MonoBehaviour
         // {
             // 物体に当たった3秒後に消える
             Destroy(this.gameObject, 3f);
+            Debug.Log(other.gameObject.name);
         // }
     }
 }
