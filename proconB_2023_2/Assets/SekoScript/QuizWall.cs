@@ -42,9 +42,25 @@ public class QuizWall : MonoBehaviour {
     {
         // クイズの内容を登録
         QuizList = new Dictionary<int,List<string>>();
-        QuizList.Add(0,new List<string>(){"KITのシンボルは、風の塔である？","0"});
-        QuizList.Add(1,new List<string>(){"KITの学食はオルタスという？","1"});
-        QuizList.Add(2,new List<string>(){"KITは国立大学？","1"});
+        QuizList.Add(0,new List<string>(){"KITのシンボルは、海の塔である？","0"});
+        QuizList.Add(1,new List<string>(){"KITのシンボルは、虹の塔である？","1"});
+        QuizList.Add(2,new List<string>(){"KITの学食は、オルタスという？","1"});
+        QuizList.Add(3,new List<string>(){"KITは、国立大学？","1"});
+        QuizList.Add(4,new List<string>(){"渋谷先生の年齢は、60歳である？","1"});
+        QuizList.Add(5,new List<string>(){"渋谷先生の誕生日は、5月21日である？","0"});
+        QuizList.Add(6,new List<string>(){"KITの大学設置は、1946年である？","0"});
+        QuizList.Add(7,new List<string>(){"KITの母体の創立は、1899年である？","1"});
+        QuizList.Add(8,new List<string>(){"KITは昔、短大があった？","1"});
+        QuizList.Add(9,new List<string>(){"けいおん！の作者は、KIT出身である？","1"});
+        QuizList.Add(10,new List<string>(){"現在のKITの学長は、森迫清正である？","0"});
+        QuizList.Add(11,new List<string>(){"寶珍先生は、昔NTTで働いていた？","1"});
+        QuizList.Add(12,new List<string>(){"現在の情報工学課程長は、稲葉先生？","0"});
+        QuizList.Add(13,new List<string>(){"KITと略す大学は日本に3つ以上ある？","1"});
+        QuizList.Add(14,new List<string>(){"松ケ崎駅は、1997年に開業した？","1"});
+        QuizList.Add(15,new List<string>(){"KITの3号館は、国の無形文化財である？","0"});
+        QuizList.Add(16,new List<string>(){"KITの3号館は、1930年に建造された？","1"});
+        QuizList.Add(17,new List<string>(){"KITは、「科捜研の女」のロケ地？","1"});
+
     }
 
     void Update()
@@ -75,7 +91,7 @@ public class QuizWall : MonoBehaviour {
     void QuizShow() {
 		QuizUI.SetActive (true);
         // ランダムな問題番号を取得
-        quizNum  = UnityEngine.Random.Range(0, 3);
+        quizNum  = UnityEngine.Random.Range(0, 17);
         QuizData = QuizList[quizNum][0];
         Debug.Log(quizNum);
         if(QuizList[quizNum][1] == "1"){
