@@ -122,7 +122,7 @@ public class PlayerAction : MonoBehaviour
         //攻撃した相手がEnemyの場合
         if(other.CompareTag("Enemy")&&AttackFlag==true){
             
-            Destroy(other.gameObject);
+            Destroy(other.gameObject, 0.1f);
             BreakEffect(other);
  
         }

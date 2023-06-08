@@ -848,7 +848,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &903523963
 GameObject:
@@ -998,16 +998,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da3b0a2f5c68884ca6e2d689c6b6096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max: 21
+  max: 11
   wall: {fileID: 3454890684690201858, guid: 8bb41a4f471ece34aaa7554176dab013, type: 3}
   wall2: {fileID: 3454890684690201858, guid: baa1503ddd400ce4280cc8ddda42f3e8, type: 3}
+  wall_regid: {fileID: 3181318042722865732, guid: e6cafc61e30d92a4ebb3b70e0f666dd8, type: 3}
   floor: {fileID: 5037462493905790556, guid: 5758981944fec134b8294ba4349d4a36, type: 3}
+  maruta_up: {fileID: 446166949900692094, guid: 7aa056b7cfce8394e89851c678b2122b, type: 3}
+  maruta_down: {fileID: 446166949900692094, guid: 70ca9a7d4ca38ef4aaa52e070f6de498, type: 3}
   start: {fileID: 1018186025534052121, guid: 55395447af976334b99f3e5c576bf4cf, type: 3}
   goal: {fileID: 160994614780730875, guid: 457585224f2ac364dba1446fd5bb7efe, type: 3}
-  breakwall: {fileID: 839329271}
-  quiz: {fileID: 8219629836695380203, guid: 88fd8b374f49bc94284645ca2d685e07, type: 3}
+  breakwall: {fileID: 8219629836695380203, guid: 88fd8b374f49bc94284645ca2d685e07, type: 3}
+  quiz: {fileID: 839329271}
   canvas: {fileID: 239398537}
   goal_area: {fileID: 6571941562282127718, guid: d5c4f3e0ca12cdb4cac0b1d5b065f52d, type: 3}
+  goal_flag: {fileID: 7712686079825497215, guid: cdec317739cffee4eaf4866991d94c27, type: 3}
   goalPos: {x: 0, y: 0}
 --- !u!4 &1159227572
 Transform:
