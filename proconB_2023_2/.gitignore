@@ -35,7 +35,10 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
- 
+
+#log files, for some plugins
+*.log 
+
 # Crashlytics generated file
 Assets/StreamingAssets/crashlytics-build.properties
  
