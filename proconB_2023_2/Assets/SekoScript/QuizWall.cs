@@ -53,11 +53,11 @@ public class QuizWall : MonoBehaviour {
         bool batsu = false;
         // oまたはxが入力された場合処理
         // これをジョイコンのボタンに変更する
-        if (Input.GetKey(KeyCode.O)){
+        if (Input.GetKey(KeyCode.Joystick1Button12)){
             //正解を確認する
             this.CheckAnswer(maru);
         }
-        if (Input.GetKey(KeyCode.X)){
+        if (Input.GetKey(KeyCode.Joystick1Button9)){
             //正解を確認する
             this.CheckAnswer(batsu);
         }
