@@ -9,5 +9,9 @@ public class GameSystem : MonoBehaviour {
         Debug.Log("Start");
 		SceneManager.LoadScene ("CreateGame");
 	}
+	void Update(){
+		if(Input.GetKey(KeyCode.Joystick1Button9))
+		StartGame();
+	}
 }
  
