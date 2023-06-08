@@ -20,7 +20,7 @@ public class GameResult : MonoBehaviour {
         // PlayerPrefs.HasKeyでデータのセーブ
         // HighScoreに値があれば、highScoreを保存
 		if (PlayerPrefs.HasKey ("HighScore")) {
-			highScore = PlayerPrefs.GetInt ("HighScore");
+			highScore = PlayerPrefs.GetFloat("HighScore");
 		} else { // なければ999
 			highScore = 999;
 		}
@@ -36,10 +36,13 @@ public class GameResult : MonoBehaviour {
 			float result = Mathf.Floor (Timer.time * 10)/10;
 			resultTime.text = "ResultTime:" + result;
 			bestTime.text = "BestTime:" + highScore;
+			Debug.Log(highScore);
             // 今回が良ければハイスコアを書き換える
 			if (highScore > result) { 
 				PlayerPrefs.SetFloat ("HighScore", result);
 			}
+			Goal.goal = false;
+			//PlayerPrefs.DeleteAll();
 			//3秒後にメソッドを実行する
 			Invoke("OnRetry", 5);
 		}
