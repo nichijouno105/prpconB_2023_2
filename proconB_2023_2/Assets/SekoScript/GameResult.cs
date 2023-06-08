@@ -40,14 +40,14 @@ public class GameResult : MonoBehaviour {
 			if (highScore > result) { 
 				PlayerPrefs.SetFloat ("HighScore", result);
 			}
-			
+			//3秒後にメソッドを実行する
+			Invoke("OnRetry", 5);
 		}
 	}
     // Retryボタンが押されたとき
 	public void OnRetry()
 	{
         // 再読み込み
-		SceneManager.LoadScene (
-			SceneManager.GetActiveScene ().name);
+		SceneManager.LoadScene ("StartScene");
 	}
 }
