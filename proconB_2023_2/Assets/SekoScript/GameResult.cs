@@ -48,6 +48,12 @@ public class GameResult : MonoBehaviour {
 	public void OnRetry()
 	{
         // 再読み込み
-		SceneManager.LoadScene ("StartScene");
+		GameObject targe1 = GameObject.Find("Dungeon");
+		GameObject targe2 = GameObject.Find("Canvas");
+		Destroy(targe1);
+		Destroy(targe2);
+		SceneManager.LoadScene ("StartScene",LoadSceneMode.Single);
+
+		SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
 	}
 }

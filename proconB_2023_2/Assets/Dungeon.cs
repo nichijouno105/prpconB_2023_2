@@ -72,7 +72,11 @@ public class Dungeon : MonoBehaviour
         DontDestroyOnLoad(transform);
         DontDestroyOnLoad(canvas);
 
-        SceneManager.LoadScene ("Game");
+        //SceneManager.LoadScene ("Game");
+        Invoke("GotoGame",3);
+    }
+    private void GotoGame(){
+         SceneManager.LoadScene ("Game");
     }
 
     private void ini_Maze()
