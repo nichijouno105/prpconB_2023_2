@@ -33,7 +33,7 @@ public class Dungeon : MonoBehaviour
     public static Vector2Int startPos;    //スタートの座標
     public Vector2Int goalPos;     //ゴールの座標
     private List<Vector2Int> ReStartPos;
-    private int hight = 3;
+    //private int hight = 3;
     void Start()
     {
         ReStartPos = new List<Vector2Int>();
@@ -60,22 +60,7 @@ public class Dungeon : MonoBehaviour
         goalObj.transform.parent = transform;
         goalareaObj.transform.parent = transform;
         goalflagObj.transform.parent = transform;
-        // if(this.Maze[startPos.x+1, startPos.y]==Materials.Path){
-        //     GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x+2, 0, startPos.y), Quaternion.identity) as GameObject;
-        //     breakwallObj.transform.parent = transform;
-        // }        
-        // else if(Maze[startPos.x, startPos.y+1]==Materials.Path){
-        //     GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x, 0, startPos.y+2), Quaternion.identity) as GameObject;
-        //     breakwallObj.transform.parent = transform;
-        // }        
-        // else if(Maze[startPos.x-1, startPos.y]==Materials.Path){
-        //     GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x-2, 0, startPos.y), Quaternion.identity) as GameObject;
-        //     breakwallObj.transform.parent = transform;
-        // }        
-        // else if(Maze[startPos.x, startPos.y-1]==Materials.Path){
-        //     GameObject breakwallObj = Instantiate(breakwall, new Vector3(startPos.x, 0, startPos.y-2), Quaternion.identity) as GameObject;
-        //     breakwallObj.transform.parent = transform;
-        // }
+  
         DontDestroyOnLoad(transform);
         DontDestroyOnLoad(canvas);
 
@@ -278,20 +263,6 @@ public class Dungeon : MonoBehaviour
 
         return Pos;
     }
-
-    /*private double nomal(){
-
-        double rnd = Random.Range(0,1); 
-        double X,Y; 
-        double Z1; 
-
-        X = rnd.NextDouble();
-        Y = rnd.NextDouble(); 
-        Z1 = Mathf.Sqrt(-2.0 * Mathf.Log(X)) * Mathf.Cos(2.0 * Mathf.PI * Y); 
-
-        return Z1;
-
-    }*/
 
     private enum Materials
     {

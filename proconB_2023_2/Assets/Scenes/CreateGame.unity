@@ -998,7 +998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da3b0a2f5c68884ca6e2d689c6b6096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max: 11
+  max: 15
   wall: {fileID: 3454890684690201858, guid: 8bb41a4f471ece34aaa7554176dab013, type: 3}
   wall2: {fileID: 3454890684690201858, guid: baa1503ddd400ce4280cc8ddda42f3e8, type: 3}
   wall_regid: {fileID: 3181318042722865732, guid: e6cafc61e30d92a4ebb3b70e0f666dd8, type: 3}
